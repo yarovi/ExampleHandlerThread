@@ -1,6 +1,6 @@
 package org.yasmani.io;
 
-import sun.net.www.http.HttpClient;
+import java.net.http.HttpClient;
 
 import java.io.IOException;
 import java.net.URI;
@@ -9,19 +9,24 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 public class BookClient {
 
-    private  HttpClient clientBook;
+    Logger logger = Logger.getLogger( BookClient.class.getName() );
+    private  HttpClient clientBook=HttpClient.newHttpClient();
 
     private static final String BASE_URL = "http://localhost:8080/api/books";
 
+
+    public BookClient() {
+    }
+
     public void createRequest() throws IOException {
         try {
-            clientBook = HttpClient.New(URI.create("http://localhost:8080/api/books").toURL());
 
             ExecutorService executor = Executors.newFixedThreadPool(3);
-
+            logger.info( "Creating request..." );
             Runnable createBookTask = () -> {
                 try {
                     HttpRequest request = HttpRequest.newBuilder()
@@ -31,19 +36,22 @@ public class BookClient {
                             .build();
 
                     HttpResponse<String> response = clientBook.send(request, HttpResponse.BodyHandlers.ofString());
-                    System.out.println("Response: " + response.body());
+                    logger.info("Response: " + response.body());
                 } catch (Exception e) {
                     e.printStackTrace();
+                    logger.severe("Error: " + e.getMessage());
                 }
             };
 
             for (int i = 0; i < 3; i++) {
                 executor.submit(createBookTask);
+                logger.info( "Created request... {}");
             }
             executor.shutdown();
             executor.awaitTermination(1, TimeUnit.MINUTES);
         }catch (InterruptedException e) {
             e.printStackTrace();
+            logger.severe("Error: " + e.getMessage());
         }
     }
 }

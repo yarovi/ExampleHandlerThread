@@ -1,8 +1,8 @@
-package org.yasmani.io.microuser.service;
+package org.yasmani.io.mybook.service;
 
 import org.springframework.stereotype.Service;
-import org.yasmani.io.microuser.entity.Book;
-import org.yasmani.io.microuser.repository.BookRepository;
+import org.yasmani.io.mybook.entity.Book;
+import org.yasmani.io.mybook.repository.BookRepository;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package org.yasmani.io.microuser.controller;
+package org.yasmani.io.mybook.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.yasmani.io.microuser.entity.Book;
-import org.yasmani.io.microuser.service.BookService;
+import org.yasmani.io.mybook.entity.Book;
+import org.yasmani.io.mybook.service.BookService;
 
 import java.util.List;
 import java.util.logging.Logger;

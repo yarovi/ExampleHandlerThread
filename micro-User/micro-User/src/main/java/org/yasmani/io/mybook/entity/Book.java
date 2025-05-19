@@ -1,4 +1,4 @@
-package org.yasmani.io.microuser.entity;
+package org.yasmani.io.mybook.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

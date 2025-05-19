@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.yasmani.io</groupId>
-    <artifactId>micro-User</artifactId>
+    <artifactId>micro-Book</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>micro-User</name>
-    <description>micro-User</description>
+    <name>micro-Book</name>
+    <description>micro-Book</description>
     <url/>
     <licenses>
         <license/>
